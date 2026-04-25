@@ -1,0 +1,47 @@
+class Rectangle {
+    double width;
+    double height;
+
+    // No-argument constructor
+    Rectangle() {
+        width = 1;
+        height = 1;
+    }
+
+    // Parameterized constructor
+    Rectangle(double w, double h) {
+        width = w;
+        height = h;
+    }
+
+    // Method to calculate area
+    double getArea() {
+        return width * height;
+    }
+
+    // Method to calculate perimeter
+    double getPerimeter() {
+        return 2 * (width + height);
+    }
+}
+
+public class RectangleTest {
+    public static void main(String[] args) {
+
+        // Object using default constructor
+        Rectangle r1 = new Rectangle();
+
+        // Object using parameterized constructor
+        Rectangle r2 = new Rectangle(5, 10);
+
+        System.out.println("Rectangle 1:");
+        System.out.println("Width = " + r1.width + ", Height = " + r1.height);
+        System.out.println("Area = " + r1.getArea());
+        System.out.println("Perimeter = " + r1.getPerimeter());
+
+        System.out.println("\nRectangle 2:");
+        System.out.println("Width = " + r2.width + ", Height = " + r2.height);
+        System.out.println("Area = " + r2.getArea());
+        System.out.println("Perimeter = " + r2.getPerimeter());
+    }
+}
