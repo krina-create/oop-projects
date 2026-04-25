@@ -1,0 +1,57 @@
+// Base class
+class Employee {
+    String name;
+    String department;
+
+    // Method to display employee details
+    void displayDetails() {
+        System.out.println("Employee Name: " + name);
+        System.out.println("Department: " + department);
+    }
+}
+
+// Derived class
+class Manager extends Employee {
+    int teamSize;
+    String projectName;
+
+    // Overriding displayDetails() method
+    @Override
+    void displayDetails() {
+        System.out.println("Manager Name: " + name);
+        System.out.println("Department: " + department);
+        System.out.println("Team Size: " + teamSize);
+        System.out.println("Project Name: " + projectName);
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+
+        // Employee object
+        Employee e = new Employee();
+        e.name = "Krina";
+        e.department = "IT";
+
+        // Manager object
+        Manager m = new Manager();
+        m.name = "Riya";
+        m.department = "Development";
+        m.teamSize = 10;
+        m.projectName = "AI System";
+
+        // Method calls
+        System.out.println("Employee Details:");
+        e.displayDetails();
+
+        System.out.println("\nManager Details:");
+        m.displayDetails();
+
+        // Demonstrating runtime polymorphism
+        Employee ref;
+        ref = m;  // reference of parent, object of child
+        System.out.println("\nUsing Parent Reference for Manager:");
+        ref.displayDetails();  // calls Manager's method
+    }
+}
