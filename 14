@@ -1,0 +1,83 @@
+// Base class
+class BankAccount {
+    int accountNumber;
+    String accountHolderName;
+    double balance;
+
+    // Method to open account
+    void openAccount(int accNo, String name, double bal) {
+        accountNumber = accNo;
+        accountHolderName = name;
+        balance = bal;
+    }
+
+    // Deposit method
+    void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposited: " + amount);
+    }
+
+    // Withdraw method
+    void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrawn: " + amount);
+        } else {
+            System.out.println("Insufficient Balance!");
+        }
+    }
+
+    // Check balance
+    void checkBalance() {
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Name: " + accountHolderName);
+        System.out.println("Balance: " + balance);
+    }
+}
+
+// SavingAccount class
+class SavingAccount extends BankAccount {
+    double interestRate = 5; // 5%
+
+    // Method to calculate interest
+    void calculateInterest() {
+        double interest = (balance * interestRate) / 100;
+        System.out.println("Interest (Saving Account): " + interest);
+    }
+}
+
+// FixedDepositAccount class
+class FixedDepositAccount extends BankAccount {
+    double interestRate = 7; // 7%
+    int years;
+
+    // Method to calculate maturity amount
+    void maturityAmount(int years) {
+        this.years = years;
+        double maturity = balance * Math.pow((1 + interestRate / 100), years);
+        System.out.println("Maturity Amount (FD): " + maturity);
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+
+        // Saving Account object
+        SavingAccount sa = new SavingAccount();
+        sa.openAccount(101, "Krina", 10000);
+        sa.deposit(2000);
+        sa.withdraw(1500);
+        sa.checkBalance();
+        sa.calculateInterest();
+
+        System.out.println("----------------------");
+
+        // Fixed Deposit Account object
+        FixedDepositAccount fd = new FixedDepositAccount();
+        fd.openAccount(202, "Krina", 20000);
+        fd.deposit(5000);
+        fd.checkBalance();
+        fd.maturityAmount(3); // 3 years
+    }
+}
