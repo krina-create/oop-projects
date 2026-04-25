@@ -1,0 +1,37 @@
+// Interface
+interface Classify {
+    String getDivision(double average);
+}
+
+// Class implementing the interface
+class Result implements Classify {
+
+    // Implementing method
+    public String getDivision(double average) {
+        if (average >= 60) {
+            return "First Division";
+        } else if (average >= 50) {
+            return "Second Division";
+        } else if (average >= 40) {
+            return "Third Division";
+        } else {
+            return "Fail";
+        }
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+
+        Result r = new Result();
+
+        double avg1 = 65.5;
+        double avg2 = 52.0;
+        double avg3 = 38.0;
+
+        System.out.println("Average: " + avg1 + " → " + r.getDivision(avg1));
+        System.out.println("Average: " + avg2 + " → " + r.getDivision(avg2));
+        System.out.println("Average: " + avg3 + " → " + r.getDivision(avg3));
+    }
+}
