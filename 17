@@ -1,0 +1,53 @@
+// First interface
+interface Student {
+    void getStudentDetails(String name, int rollNo);
+}
+
+// Second interface
+interface Marks {
+    void getMarks(int m1, int m2, int m3);
+}
+
+// Class implementing both interfaces
+class Result implements Student, Marks {
+    String name;
+    int rollNo;
+    int m1, m2, m3;
+
+    // Implement Student interface method
+    public void getStudentDetails(String name, int rollNo) {
+        this.name = name;
+        this.rollNo = rollNo;
+    }
+
+    // Implement Marks interface method
+    public void getMarks(int m1, int m2, int m3) {
+        this.m1 = m1;
+        this.m2 = m2;
+        this.m3 = m3;
+    }
+
+    // Method to calculate total and percentage
+    void displayResult() {
+        int total = m1 + m2 + m3;
+        double percentage = total / 3.0;
+
+        System.out.println("Name: " + name);
+        System.out.println("Roll No: " + rollNo);
+        System.out.println("Marks: " + m1 + ", " + m2 + ", " + m3);
+        System.out.println("Total: " + total);
+        System.out.println("Percentage: " + percentage + "%");
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+
+        Result r = new Result();
+
+        r.getStudentDetails("Krina", 101);
+        r.getMarks(75, 80, 85);
+        r.displayResult();
+    }
+}
