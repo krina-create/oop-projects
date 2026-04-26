@@ -1,0 +1,72 @@
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+import javafx.geometry.Insets;
+
+public class RegistrationForm extends Application {
+
+    public void start(Stage stage) {
+
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(20));
+        grid.setHgap(10);
+        grid.setVgap(10);
+
+        // Labels
+        Label rollLabel = new Label("Roll No:");
+        Label nameLabel = new Label("Name:");
+        Label emailLabel = new Label("Email:");
+        Label passLabel = new Label("Password:");
+
+        // Fields
+        TextField rollField = new TextField();
+        TextField nameField = new TextField();
+        TextField emailField = new TextField();
+        PasswordField passField = new PasswordField();
+
+        // Button
+        Button submitBtn = new Button("Submit");
+
+        // Result
+        Label result = new Label();
+
+        // Add to grid
+        grid.add(rollLabel, 0, 0);
+        grid.add(rollField, 1, 0);
+
+        grid.add(nameLabel, 0, 1);
+        grid.add(nameField, 1, 1);
+
+        grid.add(emailLabel, 0, 2);
+        grid.add(emailField, 1, 2);
+
+        grid.add(passLabel, 0, 3);
+        grid.add(passField, 1, 3);
+
+        grid.add(submitBtn, 1, 4);
+        grid.add(result, 1, 5);
+
+        // Action
+        submitBtn.setOnAction(e -> {
+            String roll = rollField.getText();
+            String name = nameField.getText();
+            String email = emailField.getText();
+
+            result.setText("Roll No: " + roll +
+                           "\nName: " + name +
+                           "\nEmail: " + email);
+        });
+
+        Scene scene = new Scene(grid, 400, 300);
+
+        stage.setTitle("Registration Form");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
