@@ -1,0 +1,45 @@
+import java.io.*;
+
+class FileCount {
+    public static void main(String[] args) {
+
+        int charCount = 0, wordCount = 0, lineCount = 0;
+
+        try {
+            // Check file name
+            if (args.length == 0) {
+                System.out.println("Please provide file name");
+                return;
+            }
+
+            FileReader fr = new FileReader(args[0]);
+            BufferedReader br = new BufferedReader(fr);
+
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                lineCount++;
+
+                // Count words
+                String words[] = line.trim().split("\\s+");
+                if (line.trim().length() > 0)
+                    wordCount += words.length;
+
+                // Count characters (excluding newline)
+                charCount += line.length();
+            }
+
+            br.close();
+
+            System.out.println("Lines: " + lineCount);
+            System.out.println("Words: " + wordCount);
+            System.out.println("Characters: " + charCount);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+
+        } catch (IOException e) {
+            System.out.println("Error reading file");
+        }
+    }
+}
