@@ -1,0 +1,39 @@
+import java.io.*;
+
+class FileStats {
+    public static void main(String[] args) {
+
+        int lineCount = 0, wordCount = 0, charCount = 0;
+
+        try {
+            FileReader fr = new FileReader("data.txt");
+            BufferedReader br = new BufferedReader(fr);
+
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                lineCount++;
+
+                // Count words
+                String words[] = line.trim().split("\\s+");
+                if (line.trim().length() > 0)
+                    wordCount += words.length;
+
+                // Count characters (excluding spaces)
+                charCount += line.replaceAll(" ", "").length();
+            }
+
+            br.close();
+
+            System.out.println("Lines: " + lineCount);
+            System.out.println("Words: " + wordCount);
+            System.out.println("Characters (excluding spaces): " + charCount);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+
+        } catch (IOException e) {
+            System.out.println("Error reading file");
+        }
+    }
+}
