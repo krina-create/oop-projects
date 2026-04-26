@@ -1,0 +1,37 @@
+import java.io.*;
+
+class StudentFile {
+    public static void main(String[] args) {
+
+        try {
+            // Step 1: Create and write into file
+            FileWriter fw = new FileWriter("students.txt");
+
+            fw.write("101 Krina 85\n");
+            fw.write("102 Riya 90\n");
+            fw.write("103 Aman 78\n");
+
+            fw.close();
+            System.out.println("Data written to file.");
+
+            // Step 2: Read file and display content
+            FileReader fr = new FileReader("students.txt");
+            BufferedReader br = new BufferedReader(fr);
+
+            String line;
+            System.out.println("\nStudent Records:");
+
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            br.close();
+
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+
+        } finally {
+            System.out.println("\nFile operation completed.");
+        }
+    }
+}
